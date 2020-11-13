@@ -4,9 +4,10 @@ import { View, TouchableOpacity, Text } from 'react-native';
 import Icon from '../icon';
 import { icons } from '../../assets';
 import styles, { HEIGHT } from './styles';
+import colors from 'react-native-toast-message/src/colors';
 
 const BaseToast = (props) => {
-  const { color, icon, text1, text2, onClose } = props;
+  const { color, icon, text1, text2, onClose, backgroundColor, textColor } = props;
 
   const baseStyle = [
     styles.base,
@@ -15,7 +16,7 @@ const BaseToast = (props) => {
   ];
 
   return (
-    <View style={baseStyle}>
+    <View style={[baseStyle, {backgroundColor: backgroundColor } ]}>
       <View style={styles.iconContainer}>
         {icon ? (
           <Icon style={styles.icon} source={icon} />
@@ -28,14 +29,14 @@ const BaseToast = (props) => {
         <View style={styles.body}>
           {text1 !== undefined && (
             <View>
-              <Text style={styles.text1} numberOfLines={1}>
+              <Text style={[styles.text1, { color: textColor }]} numberOfLines={1}>
                 {text1}
               </Text>
             </View>
           )}
           {text2 !== undefined && (
             <View>
-              <Text style={styles.text2} numberOfLines={2}>
+              <Text style={[styles.text2, { color: textColor } ]} numberOfLines={2}>
                 {text2}
               </Text>
             </View>

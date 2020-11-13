@@ -4,6 +4,7 @@ import { Animated, PanResponder } from 'react-native';
 import SuccessToast from './components/success';
 import ErrorToast from './components/error';
 import InfoToast from './components/info';
+import WarningToast from './components/warning';
 import { complement } from './utils/arr';
 import { includeKeys } from './utils/obj';
 import styles from './styles';
@@ -11,14 +12,17 @@ import styles from './styles';
 const FRICTION = 8;
 
 const defaultComponentsConfig = {
-  success: ({ hide, text1, text2 }) => (
-    <SuccessToast onClose={hide} text1={text1} text2={text2} />
+  success: ({ hide, text1, text2, backgroundColor, textColor }) => (
+    <SuccessToast backgroundColor={backgroundColor || '#DFF2BF'} textColor={textColor || '#4F8A10'}  onClose={hide} text1={text1} text2={text2} />
   ),
   error: ({ hide, text1, text2 }) => (
-    <ErrorToast onClose={hide} text1={text1} text2={text2} />
+    <ErrorToast backgroundColor={backgroundColor || '#FFD2D2'} textColor={textColor ||'#D8000C'} onClose={hide} text1={text1} text2={text2} />
   ),
   info: ({ hide, text1, text2 }) => (
-    <InfoToast onClose={hide} text1={text1} text2={text2} />
+    <InfoToast backgroundColor={backgroundColor || '#BDE5F8'} textColor={textColor || '#000'} onClose={hide} text1={text1} text2={text2} />
+  ),
+  warning: ({ hide, text1, text2 }) => (
+    <WarningToast backgroundColor={backgroundColor || '#FEEFB3'} textColor={textColor || '#9F6000'} onClose={hide} text1={text1} text2={text2} />
   )
 };
 
@@ -268,7 +272,9 @@ class Toast extends Component {
           'text1',
           'text2',
           'hide',
-          'show'
+          'show',
+          'backgroundColor',
+          'textColor'
         ]
       }),
       hide: this.hide,
