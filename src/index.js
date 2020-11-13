@@ -15,13 +15,13 @@ const defaultComponentsConfig = {
   success: ({ hide, text1, text2, backgroundColor, textColor }) => (
     <SuccessToast backgroundColor={backgroundColor || '#DFF2BF'} textColor={textColor || '#4F8A10'}  onClose={hide} text1={text1} text2={text2} />
   ),
-  error: ({ hide, text1, text2 }) => (
+  error: ({ hide, text1, text2,backgroundColor, textColor }) => (
     <ErrorToast backgroundColor={backgroundColor || '#FFD2D2'} textColor={textColor ||'#D8000C'} onClose={hide} text1={text1} text2={text2} />
   ),
-  info: ({ hide, text1, text2 }) => (
+  info: ({ hide, text1, text2,backgroundColor, textColor }) => (
     <InfoToast backgroundColor={backgroundColor || '#BDE5F8'} textColor={textColor || '#000'} onClose={hide} text1={text1} text2={text2} />
   ),
-  warning: ({ hide, text1, text2 }) => (
+  warning: ({ hide, text1, text2, backgroundColor, textColor }) => (
     <WarningToast backgroundColor={backgroundColor || '#FEEFB3'} textColor={textColor || '#9F6000'} onClose={hide} text1={text1} text2={text2} />
   )
 };
